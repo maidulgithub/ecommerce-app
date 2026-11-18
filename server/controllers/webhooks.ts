@@ -18,8 +18,10 @@ export const clerkWebhook = async (req : Request, res :Response) => {
     }
 
     if(user){
+      console.log('going to updte in mongo');
         await User.findOneAndUpdate({clerkId : evt.data.id},user)
     }else{
+       console.log('going to inset in mongo');
         await User.create(userData);
     }
 
