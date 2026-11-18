@@ -15,7 +15,7 @@ const app = express();
 app.post(
   '/api/clerk',
   (req, res, next) => {
-    console.log('=== /api/clerk post hit ===', req.method, req.headers['content-type']);
+    console.log('=== /api/clerk posthit ===', req.method, req.headers['content-type']);
     next();
   },
   express.raw({ type: 'application/json' }),
