@@ -13,9 +13,9 @@ const app = express();
 })();
 
 app.post('api/clerk',express.raw({type: "application/json"}),clerkWebhook,(req: Request, res: Response) => {
-    console.log('Server is running at http://localhost');
+    console.log('Server is post at http://localhost');
 })
-console.log('Server is running at http://localhost');
+
 // Middleware
 app.use(cors())
 app.use(express.json());
