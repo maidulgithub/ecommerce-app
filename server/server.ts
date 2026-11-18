@@ -12,8 +12,10 @@ const app = express();
   // Any other server startup logic that depends on the DB connection
 })();
 
-app.post('api/clerk',express.raw({type: "application/json"}),clerkWebhook)
-
+app.post('api/clerk',express.raw({type: "application/json"}),clerkWebhook,(req: Request, res: Response) => {
+    console.log('Server is running at http://localhost');
+})
+console.log('Server is running at http://localhost');
 // Middleware
 app.use(cors())
 app.use(express.json());
