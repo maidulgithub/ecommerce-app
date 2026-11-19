@@ -7,24 +7,24 @@ import { clerkWebhook } from "./controllers/webhooks.js";
 
 const app = express();
 // connect to db
-(async () => {
-  await connectDB();
+
+  
   // Any other server startup logic that depends on the DB connection
-})();
 
-app.post(
-  '/api/clerk',
-  (req, res, next) => {
-    console.log('=== /api/clerk posthit ===', req.method, req.headers['content-type']);
-    next();
-  },
-  express.raw({ type: 'application/json' }),
-  clerkWebhook
-);
 
-// app.post('api/clerk',express.raw({type: "application/json"}),clerkWebhook,(req: Request, res: Response) => {
-//     res.send('Server is Live!');
-// })
+// app.post(
+//   '/api/clerk',
+//   (req, res, next) => {
+//     console.log('=== /api/clerk posthit ===', req.method, req.headers['content-type']);
+//     next();
+//   },
+//   express.raw({ type: 'application/json' }),
+//   clerkWebhook
+// );
+
+//app.post('api/clerk',express.raw({type: "application/json"}),clerkWebhook)
+
+app.post('/api/clerk', express.raw({ type: 'application/json' }), clerkWebhook);
 
 // Middleware
 app.use(cors())
