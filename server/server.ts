@@ -7,7 +7,10 @@ import { clerkWebhook } from "./controllers/webhooks.js";
 
 const app = express();
 // connect to db
-
+// (async () => {
+//   await connectDB();
+//   // Any other server startup logic that depends on the DB connection
+// })(); 
   
   // Any other server startup logic that depends on the DB connection
 
