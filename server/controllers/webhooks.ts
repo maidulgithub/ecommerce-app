@@ -1,13 +1,14 @@
 import { verifyWebhook } from "@clerk/express/webhooks"
 import { Request, Response } from "express"
 import User from "../models/User.js"
-//import connectDB from "../config/db.js";
+import connectDB from "../config/db.js";
 
 export const clerkWebhook = async (req : Request, res :Response) => {
   try {
     console.log('enterd in webhook ');
-    //await connectDB(); 
+    await connectDB(); 
     const evt = await verifyWebhook(req)
+    console.log('enterd in webhook and id ', evt.data.id);
      
     if(evt.type === 'user.created' || evt.type === 'user.updated'){
         const user = await User.findOne({clerkId : evt.data.id})
