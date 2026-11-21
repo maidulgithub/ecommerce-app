@@ -37,7 +37,7 @@ app.use(clerkMiddleware());
 const port = process.env.PORT || 3000;
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Server is Live!');
+    res.send('Server is Live1!');
 });
 
 app.listen(port, () => {
