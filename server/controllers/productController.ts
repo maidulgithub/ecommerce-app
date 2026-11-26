@@ -5,7 +5,7 @@ import { Request, Response } from "express";
 // Get all products
 // GET /api/products
 export const getProducts = async (req: Request, res: Response) => {
-    try { 
+    try { console.log('getProducts');
         const { page = 1, limit = 10 } = req.query;
 
         const query: any = { isActive: true };
