@@ -5,7 +5,7 @@ import { Request, Response } from "express";
 // Get user cart
 // GET /api/cart
 export const getCart = async (req: Request, res: Response) => {
-    try {
+    try { console.log('getCart entered');
         let cart = await Cart.findOne({ user: req.user._id }).populate("items.product", "name images price stock");
 
         if (!cart) {
@@ -21,7 +21,7 @@ export const getCart = async (req: Request, res: Response) => {
 // Add item to cart
 // POST /api/cart/add
 export const addToCart = async (req: Request, res: Response) => {
-    try {
+    try { console.log('addCart entered');
         const { productId, quantity = 1, size } = req.body;
 
         const product = await Product.findById(productId);

@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import { clerkClient } from "@clerk/express";
 
 const makeAdmin = async () => {
-    try {
+    try { console.log('makeAdmin..');
         const email = process.env.ADMIN_EMAIL;
         const user = await User.findOneAndUpdate({ email }, { role: "admin" });
         if (user) {

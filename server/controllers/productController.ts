@@ -5,7 +5,7 @@ import { Request, Response } from "express";
 // Get all products
 // GET /api/products
 export const getProducts = async (req: Request, res: Response) => {
-    try {
+    try { 
         const { page = 1, limit = 10 } = req.query;
 
         const query: any = { isActive: true };
@@ -28,7 +28,7 @@ export const getProducts = async (req: Request, res: Response) => {
 // Get single product
 // GET /api/products/:id
 export const getProduct = async (req: Request, res: Response) => {
-    try {
+    try { 
         const product = await Product.findById(req.params.id);
         if (!product) {
             return res.status(404).json({ success: false, message: "Product not found" });

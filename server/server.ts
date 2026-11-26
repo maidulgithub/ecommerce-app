@@ -9,6 +9,8 @@ import ProductRouter from "./routes/productsRoutes.js";
 import CartRouter from "./routes/cartRoutes.js";
 import OrderRouter from "./routes/ordersRoutes.js";
 import AddressRouter from "./routes/addressRoutes.js";
+import AdminRouter from "./routes/adminRoutes.js";
+import { seedProducts } from "./scripts/seedProducts.js";
 
 const app = express();
 // connect to db
@@ -40,9 +42,9 @@ app.use(express.json());
 app.use(clerkMiddleware());
 
 const port = process.env.PORT || 3000;
-(async () => {
-await makeAdmin();  
-})(); 
+// (async () => {
+// await makeAdmin();  
+// })(); 
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Server is Live1!');
@@ -51,6 +53,12 @@ app.use("/api/products", ProductRouter);
 app.use("/api/carts", CartRouter);
 app.use("/api/orders", OrderRouter);
 app.use("/api/addresses", AddressRouter);
+app.use("/api/admin", AdminRouter);
+
+// Seed products if no products are present
+// (async () => {
+// await seedProducts(process.env.MONGO_DB_URI as string);
+// })(); 
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
